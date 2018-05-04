@@ -1,7 +1,7 @@
 # Quantum Edward
 
 Quantum Edward at this point is just a small library of Python tools for 
-doing classical supervised training of Quantum Neural Networks (QNNs). 
+doing classical supervised learning of Quantum Neural Networks (QNNs). 
 
 An analytical model of the QNN is inputted into QEdward and the training is 
 done on a classical computer, using training data already available (e.g., 
@@ -36,7 +36,7 @@ deterministic and non-deterministic (probabilistic) nodes.
 This first baby step lib does not do distributed computing. The hope is that 
 it can be used as a kindergarten to learn about these techniques, and that 
 then the lessons learned can be used to write a library that does the same 
-thing, classical supervised training of QNNs, but in a distributed fashion 
+thing, classical supervised learning of QNNs, but in a distributed fashion 
 using Edward/TensorFlow on the cloud. 
 
 The first version of Quantum Edward analyzes two QNN models called NbTrols 
