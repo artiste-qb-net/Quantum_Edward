@@ -1,6 +1,6 @@
 # Quantum Edward
 
-Quantum Edwards at this point is just a small library of Python tools for 
+Quantum Edward at this point is just a small library of Python tools for 
 doing classical supervised training of Quantum Neural Networks (QNNs). 
 
 An analytical model of the QNN is inputted into QEdward and the training is 
