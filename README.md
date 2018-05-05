@@ -3,8 +3,8 @@
 Quantum Edward at this point is just a small library of Python tools for 
 doing classical supervised learning on Quantum Neural Networks (QNNs). 
 
-An analytical model of the QNN is inputed into QEdward and the training is 
-done on a classical computer, using training data already available (e.g., 
+An analytical model of the QNN is entered as input into QEdward and the training
+is done on a classical computer, using training data already available (e.g., 
 MNIST), and using the famous BBVI (Black Box Variational Inference) method 
 described in Reference 1 below. 
 
@@ -20,8 +20,9 @@ tasks of QNNs and classical artificial neural nets (ANNs).
 
 Other workers have proposed training a QNN on an actual physical qc. But 
 current qc's are still fairly quantum noisy. Training an analytical QNN on a 
-classical computer might yield better results than training it on a qc because 
-the first strategy avoids the qc's quantum noise from degrading the training. 
+classical computer might yield better results than training it on a qc 
+because in the first strategy, the qc's quantum noise does not degrade the 
+training. 
 
 The BBVI method is a mainstay of the "Edward" software library. Edward uses 
 Google's TensorFlow lib to implement various inference methods (Monte Carlo 
