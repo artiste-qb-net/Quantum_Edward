@@ -6,19 +6,20 @@ class Plotter:
     """
     matplotlib plotting routines.
 
-    In shape (nt, 2, len1) of certain array inputs:
+    Many inputs to the functions of this class are arrays of shape (nt, 2,
+    len1). In that shape,
 
-    * nt refers to time (aka iteration).  fin_t <= nt and only first fin_t
-    entries of array are valid.
+    * nt refers to time (aka iteration).  fin_t <= nt-1 and only the first
+    fin_t entries of the array contain valid data.
 
     * 2 refers to whether for conc0 or conc1.
 
     * len1 refers to the layer. For instance, for NbTrols and NoNbTrols
     models, len1=nb.
 
-    Before plotting purposes, to reduce number of angles being displayed,
-    each layer of list1_conc0 and list1_conc1 is averaged so it becomes a
-    scalar.
+    For plotting purposes, to reduce number of angles being displayed,
+    each layer of list1_conc0 and list1_conc1 is averaged so that it becomes
+    a scalar.
 
     """
 
@@ -28,14 +29,14 @@ class Plotter:
         The input parameters of this function are created and filled when
         one runs Fitter:do_fit().
 
-        Plots time series (aka traces), for t = integers between 0 and fin_t
-        - 1 inclusive, of concentrations conc0 and conc1 and their deltas
-        delta_conc0, delta_conc1, for each layer.
+        Plots time series (aka traces), for t = int in range(fin_t),
+        of concentrations conc0 and conc1 and their deltas delta_conc0,
+        delta_conc1, for each layer.
 
         Parameters
         ----------
         fin_t : int
-            final time. Must be <= nt
+            final time. Must be <= nt-1
         conc_nt_2_len1 : np.array
             shape=(nt, 2, len1). This array is stored within Fitter and
             filled by a call to Fitter:do_fit(). It contains the time-series
@@ -52,7 +53,7 @@ class Plotter:
 
         """
         y_shape = conc_nt_2_len1.shape
-        assert fin_t <= y_shape[0]
+        assert fin_t <= y_shape[0]-1
         len1 = y_shape[2]
 
         fig, ax = plt.subplots(nrows=2, ncols=2, sharex=True)
@@ -77,14 +78,14 @@ class Plotter:
         The input parameters of this function are created and filled when
         one runs Fitter:do_fit().
 
-        Plots time series (aka traces), for t = integers between 0 and fin_t
-        - 1 inclusive, of ELBO for each layer. Since we are attempting to
-        maximize ELBO, ideally this curve should be increasing or flat.
+        Plots time series (aka traces), for t = int in range(fin_t), of ELBO
+        for each layer. Since we are attempting to maximize ELBO, ideally
+        this curve should be increasing or flat.
 
         Parameters
         ----------
         fin_t : int
-            final time. Must be <= nt
+            final time. Must be <= nt-1
         elbo_nt_len1 : np.array
             shape=(nt, len1) This array is stored within Fitter and
             filled by a call to Fitter:do_fit(). It contains the time-series

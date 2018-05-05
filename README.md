@@ -1,9 +1,9 @@
 # Quantum Edward
 
 Quantum Edward at this point is just a small library of Python tools for 
-doing classical supervised learning for Quantum Neural Networks (QNNs). 
+doing classical supervised learning on Quantum Neural Networks (QNNs). 
 
-An analytical model of the QNN is inputted into QEdward and the training is 
+An analytical model of the QNN is inputed into QEdward and the training is 
 done on a classical computer, using training data already available (e.g., 
 MNIST), and using the famous BBVI (Black Box Variational Inference) method 
 described in Reference 1 below. 
@@ -20,12 +20,12 @@ tasks of QNNs and classical artificial neural nets (ANNs).
 
 Other workers have proposed training a QNN on an actual physical qc. But 
 current qc's are still fairly quantum noisy. Training an analytical QNN on a 
-classical computer might yield better training than training on a qc because 
-it avoids the qc's quantum noise from degrading the training. 
+classical computer might yield better results than training it on a qc because 
+the first strategy avoids the qc's quantum noise from degrading the training. 
 
 The BBVI method is a mainstay of the "Edward" software library. Edward uses 
 Google's TensorFlow lib to implement various inference methods (Monte Carlo 
-and Variational ones) for Classical Bayesian Networks, and for Hierarchical 
+and Variational ones) for Classical Bayesian Networks and for Hierarchical 
 Models. H.M.s (pioneered by Andrew Gelman) are a subset of C.B. nets 
 (pioneered by Judea Pearl). Edward is now officially a part of TensorFlow, 
 and the original author of Edward, Dustin Tran, now works for Google. Before 
@@ -33,10 +33,10 @@ Edward came along, TensorFlow could only do networks with deterministic
 nodes. With the addition of Edward, TensorFlow now can do nets with both 
 deterministic and non-deterministic (probabilistic) nodes. 
 
-This first baby step lib does not do distributed computing. The hope is that 
+This first baby-step lib does not do distributed computing. The hope is that 
 it can be used as a kindergarten to learn about these techniques, and that 
 then the lessons learned can be used to write a library that does the same 
-thing, classical supervised learning for QNNs, but in a distributed fashion 
+thing, classical supervised learning on QNNs, but in a distributed fashion 
 using Edward/TensorFlow on the cloud. 
 
 The first version of Quantum Edward analyzes two QNN models called NbTrols 

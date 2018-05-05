@@ -6,10 +6,11 @@ import utilities as ut
 
 class Model:
     """
-    The models (objects of this class) operate on na + nb qubits. The input
-    state goes into the first na qubits. The other nb qubits receive an |0>
-    input. The output of the first na qubits is not measured. Only the last
-    nb qubits are measured at the output.
+    The models (objects of this class) represent quantum circuits that
+    operate on na + nb qubits. The input state goes into the first na
+    qubits. The other nb qubits receive |0> for input. The output of the
+    first na qubits is not measured. Only the last nb qubits are measured at
+    the output.
 
     We will call a list1 any list of numpy arrays of shapes given by the
     list self.shapes1, with self.len1 = len(self.shapes1). len1 will be
@@ -20,8 +21,8 @@ class Model:
     that it can also analyze other akin models. Akin models should have len1
     'layers'.
 
-    len1=nb for the two models NbTrols and NoNbTrols, but they have
-    different shapes1. In fact, for the NoNbTrols model
+    len1=nb for both models NbTrols and NoNbTrols, but they have different
+    shapes1. In fact, for the NoNbTrols model
 
     self.shapes1 =[(powna,)]*nb
 
@@ -111,11 +112,12 @@ class Model:
         with the arrows pointing downward.
 
         y is an int in range(pownb). x is an int in range(powna). list1_angs
-        is a list1 of numpy arrays containing qc gate rotation angles.
+        is a list1 of numpy arrays containing qc qubit rotation angles.
 
-        y and x are observed nodes. nsam measurements of (y, x) are given by
-        the training data. list1_angs are hidden variables. We want to
-        estimate those values for list1_angs which best fit the training data.
+        y and x are observed variables. nsam measurements of (y, x) are
+        given by the training data. list1_angs are hidden variables. We want
+        to estimate those values for list1_angs which best fit the training
+        data.
 
         Parameters
         ----------
@@ -186,7 +188,7 @@ class Model:
         x_nsam_na = npr.randint(low=0, high=2, size=(nsam, self.na))
         # print(x_nsam_na)
 
-        # x_nsam entries are integers in range 0 to powna-1 inclusive
+        # x_nsam entries are integers in range(powna)
         x_nsam = ut.bin_vec_to_dec(x_nsam_na, nsam=nsam)
         # print(x_nsam)
 

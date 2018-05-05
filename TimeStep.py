@@ -3,18 +3,19 @@ import numpy as np
 
 class TimeStep:
     """
-    An iteration or time step 't' is each time the parameters lambda =
-    list1_conc0, list1_conc1 and the function of lambda being MAXIMIZED (
-    ELBO) are changed. This class calculates the change in lambda for a
-    single iteration at the current time t=cur_t. There are various possible
-    methods for calculating delta lambda. A nice description of the various
-    methods can be found in the Wikipedia article (cited below) for
-    "Stochastic Gradient Descent" (in our case, it's an ascent)
+    An iteration or time step 't' is each time the parameters lambda = 
+    list1_conc0, list1_conc1 and the function of lambda being MAXIMIZED ( 
+    ELBO) are changed. This class calculates the change in lambda, 
+    delta lambda, for a single iteration at the current time t=cur_t. There 
+    are various possible methods for calculating delta lambda. A nice 
+    description of the various methods can be found in the Wikipedia article 
+    (cited below) for "Stochastic Gradient Descent" (in our case, it's an 
+    ascent) 
 
-    We use here a positive eta (eta is a scalar factor multiplying delta
-    lambda) because we are trying to maximize ELBO. In conventional
-    Artificial Neural Net algorithms, one is minimizing cost, one uses a
-    negative eta.
+    We use here a positive eta (eta is a scalar factor multiplying delta 
+    lambda) because we are trying to maximize ELBO. In conventional 
+    Artificial Neural Net algorithms, one is minimizing cost, so one uses a 
+    negative eta. 
 
     References
     ----------

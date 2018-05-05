@@ -52,9 +52,9 @@ class NoNbTrolsModel(Model):
         Parameters
         ----------
         y : int
-            int between 0 and pownb-1 inclusive
+            int in range(pownb)
         x : int
-            int between 0 and powna-1 inclusive
+            int in range(powna)
         list1_angs : list[np.array]
         verbose : bool
 

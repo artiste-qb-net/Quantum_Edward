@@ -115,7 +115,7 @@ def log_beta_prob(x, conc0, conc1):
     Parameters
     ----------
     x : float | np.array
-    conc0 : float
+    conc0 : float | np.array
         Concentration 0, must be >= 0
     conc1 : float | np.array
         Concentration 1, must be >= 0
@@ -147,7 +147,7 @@ def grad_log_beta_prob(x, conc0, conc1):
     Parameters
     ----------
     x : float | np.array
-        x \in interval [0, 1]
+        x in interval [0, 1]
     conc0 : float | np.array
         Concentration 0, must be >= 0
     conc1 : float | np.array

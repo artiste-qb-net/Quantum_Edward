@@ -8,8 +8,9 @@ from Model import *
 
 class NbTrolsModel(Model):
     """
-    Quantum circuits in Qubiter ASCII picture notation in ZL convention,
-    for na=4 and nb=3
+    In this class and its twin class NoNbTrolsModel, we consider Quantum
+    circuits of the following kind. Below we represent them in Qubiter ASCII
+    picture notation in ZL convention, for nb=3 and na=4
 
     [--nb---]   [----na-----]
 
@@ -28,17 +29,18 @@ class NbTrolsModel(Model):
     M   M   M
 
     A gate |---|---Ry--%---%---%---% is called an MP_Y Multiplexor,
-    or plexor for short. In Qubiter repo at github, see Rosetta Stone pdf
-    and Quantum CSD Compiler folder for more info about multiplexors.
+    or plexor for short. In the Qubiter repo at github, see Rosetta Stone
+    pdf and Quantum CSD Compiler folder for more info about multiplexors.
 
     In NbTrols and NoNbtrols models, each layer of a list1 corresponds to a
     single plexor. We list plexors (layers) in a list1 in decreasing order
-    of number of controls.
+    of distance between Ry's target qubit and 0th qubit.
+
 
     References
     ----------
     1. https://github.com/artiste-qb-net/qubiter
-    2. "Quantum Edward, Take # 1", pdf in this repo
+    2. "Quantum Edward Algebra.pdf", pdf in this repo
 
     """
 
@@ -81,9 +83,9 @@ class NbTrolsModel(Model):
         Parameters
         ----------
         y : int
-            int between 0 and pownb-1 inclusive
+            int in range(pownb)
         x : int
-            int between 0 and powna-1 inclusive
+            int in range(powna)
         list1_angs : list[np.array]
         verbose : str
 

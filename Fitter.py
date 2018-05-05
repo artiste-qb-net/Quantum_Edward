@@ -29,6 +29,7 @@ class Fitter:
     def __init__(self, model, y_nsam_nb, x_nsam_na, nsamgrad,
                  nt, eta, t_step_meth):
         """
+        Constructor
 
         Parameters
         ----------
@@ -40,12 +41,13 @@ class Fitter:
             An array of zeros and ones with shape=(nsam, na) containing nsam 
             samples of x input. 
         nsamgrad : int
-            Number of samples used for average of the gradient of ELBO
+            Number of samples used during averaging of the gradient of ELBO
         nt : int
             Number of time steps (aka iterations). Value of ELBO changes (
             increases or stays the same) with each iteration.
         eta : float
-            positive scaling parameter for delta lambda used in TimeStep class
+            positive scaling parameter (proportionality factor) for delta
+            lambda. Passed to TimeStep class
         t_step_meth : str
             str labelling the method used to calculate delta lambda. This
             str is passed to TimeStep class.
@@ -167,18 +169,19 @@ class Fitter:
     def do_fit(self):
         """
         This  function attempts to maximize ELBO over lambda. Does at most
-        nt iterations ( lambda changes, time steps). But may reach a
+        nt iterations (i.e., lambda changes, time steps). But may reach a
         convergence condition before doing nt iterations. Final iteration
         time is stored in self.fin_t.
         
-        It stores final values for time and lambda = concentrations 0, 1
+        This function stores final values for time and lambda (=
+        concentrations 0, 1)
         
         self.fin_t
         self.fin_list1_conc0
         self.fin_list1_conc1
 
-        It also stores traces (time series) for lambda = concentrations 0, 
-        1, delta lambda between consecutive steps, and the ELBO value: 
+        It also stores traces (time series) for lambda (= concentrations 0,
+        1), delta lambda between consecutive steps, and the ELBO value:
         
         self.conc_nt_2_len1
         self.delta_conc_nt_2_len1
