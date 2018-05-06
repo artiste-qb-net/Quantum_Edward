@@ -308,8 +308,8 @@ if __name__ == "__main__":
         npr.seed(1234)
         na = 2  # number of alpha qubits
         nb = 2  # number of beta qubits
-        # mod = NbTrolsModel(nb, na)
-        mod = NoNbTrolsModel(nb, na)
+        mod = NbTrolsModel(nb, na)
+        # mod = NoNbTrolsModel(nb, na)
 
         nsam = 20  # number of samples
         y_nsam_nb, x_nsam_na = mod.gen_toy_data(nsam)

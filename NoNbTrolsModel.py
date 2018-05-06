@@ -67,18 +67,18 @@ class NoNbTrolsModel(Model):
 
         # y = output in decimal
         ybin = ut.dec_to_bin_vec(y, self.nb)
-        num_nb_trols = self.nb - 1
+        num_nb_trols = 0
         for angs in list1_angs:
             ylast_bit = ybin[num_nb_trols]
             factor = ut.ang_to_cs2_prob(angs[x], ylast_bit)
             if verbose:
-                print('num_nb_trols=', num_nb_trols,
+                print('na+num_nb_trols=', self.na+num_nb_trols,
                       "ybin[:num_nb_trols+1]=", ybin[:num_nb_trols+1],
                       "ylast_bit=", ylast_bit,
                       "factor=", factor)
             prob *= factor
 
-            num_nb_trols -= 1
+            num_nb_trols += 1
 
         return prob
 

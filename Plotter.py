@@ -61,11 +61,13 @@ class Plotter:
             for y in range(2):
                 ax[0, y].plot(range(fin_t), conc_nt_2_len1[0:fin_t, y, k],
                               label='layer ' + str(k))
+                ax[0, y].legend(loc='best', fontsize='xx-small')
                 ax[0, y].set_ylabel("conc" + str(y))
 
                 ax[1, y].plot(range(fin_t),
                               delta_conc_nt_2_len1[0:fin_t, y, k],
                               label='layer ' + str(k))
+                ax[1, y].legend(loc='best', fontsize='xx-small')
                 ax[1, y].set_ylabel("delta_conc" + str(y))
 
         ax[0, 0].get_shared_y_axes().join(ax[0, 0], ax[0, 1])
@@ -106,4 +108,5 @@ class Plotter:
                      label='layer ' + str(k))
         plt.xlabel("t")
         plt.ylabel("ELBO")
+        plt.legend(loc=0, fontsize='xx-small')
         plt.show()

@@ -28,7 +28,7 @@ class Model:
 
     where powna = 2^na = 1 << na, whereas for the NbTrols model,
 
-    self.shapes1 =[(1 << (na + nb - 1 - k),) for k in range(nb)]
+    self.shapes1 =[(1 << (na +  k),) for k in range(nb)]
 
     The Wikipedia article cited below refers to the Beta distribution
     concentrations conc0 and conc1 as alpha and beta, respectively.
