@@ -49,7 +49,6 @@ class TimeStep:
         self.list1_cum_grad = [None]*len1
         self.list1_cum_sq_grad = [None]*len1
 
-
     def get_delta_conc(self, grad0, grad1, cur_t, k):
         """
         Change in lambda = concentrations conc0 and conc1. grad0 and grad1

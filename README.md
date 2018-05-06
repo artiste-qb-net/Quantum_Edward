@@ -49,6 +49,7 @@ as do classical ANNs (Artificial Neural Nets). TensorFlow can analyze
 layered models (e.g., ANN) or more general DAG (directed acyclic graph) 
 models (e.g., Bayesian networks). 
 
+This software is distributed under the MIT License.
 
 References
 ----------

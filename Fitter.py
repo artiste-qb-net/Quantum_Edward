@@ -98,9 +98,6 @@ class Fitter:
         tuple[list[np.array], list[np.array], list[np.array]]
 
         """
-        na = self.mod.na
-        nb = self.mod.nb
-        powna = 1 << na  # 2^na
         nsam = self.y_nsam_nb.shape[0]
         len1 = self.mod.len1
 
@@ -129,7 +126,6 @@ class Fitter:
         #     print(j, tempo[j])
 
         list1_g0, list1_g1 = my_zip(xx)
-
 
         # sum_sam (log p(y| x,  z = angs/pi))
         x_nsam = ut.bin_vec_to_dec(self.x_nsam_na, nsam=nsam)
@@ -192,9 +188,6 @@ class Fitter:
         None
 
         """
-        na = self.mod.na
-        nb = self.mod.nb
-        powna = 1 << na  # 2^na
         len1 = self.mod.len1
 
         # starting values
@@ -285,7 +278,7 @@ class Fitter:
             print("st.dev.:\n" + str(list1_std_zpred[k]))
             zprior = self.mod.list1_angs_prior[k]/np.pi
             print("frac. error = (est-prior)/prior:\n" +
-                  str((list1_zpred[k] -zprior)/zprior) + "\n")
+                  str((list1_zpred[k] - zprior)/zprior) + "\n")
 
     def plot_fit_traces(self):
         """
@@ -305,7 +298,34 @@ class Fitter:
 
 
 if __name__ == "__main__":
+    from NbTrolsModel import *
+    from NoNbTrolsModel import *
 
     def main():
-        print(5)
+
+        # Ridiculously small numbers,
+        # just to make sure it runs without crashing
+        npr.seed(1234)
+        na = 2  # number of alpha qubits
+        nb = 2  # number of beta qubits
+        # mod = NbTrolsModel(nb, na)
+        mod = NoNbTrolsModel(nb, na)
+
+        nsam = 20  # number of samples
+        y_nsam_nb, x_nsam_na = mod.gen_toy_data(nsam)
+
+        nsamgrad = 10  # number of samples for grad estimate
+        nt = 20  # number of interations
+
+        # t_step_type, eta = naive', .0003  # very sensitive to eta
+        # t_step_type, eta = 'naive_t', .0003  # very sensitive to eta
+        # t_step_type, eta = 'mag1_grad', .2
+        t_step_meth, eta = 'ada_grad', .1
+
+        ff = Fitter(mod, y_nsam_nb, x_nsam_na,
+                    nsamgrad, nt, eta, t_step_meth)
+        ff.do_fit()
+        ff.print_fit_values_at_fin_t()
+        ff.plot_fit_traces()
+
     main()

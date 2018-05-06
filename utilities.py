@@ -60,7 +60,7 @@ def dec_to_bin_vec(dec, size, nsam=1):
     """
     def fun(scalar):
         assert scalar < (1 << size), "size " + str(size) + " is too small"\
-        " to fit bin rep of " + str(scalar)
+            " to fit bin rep of " + str(scalar)
         return np.array([(scalar >> k) & 1 for k in range(size)])
     if nsam == 1:
         return fun(dec)

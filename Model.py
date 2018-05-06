@@ -122,7 +122,7 @@ class Model:
         Parameters
         ----------
         y : int
-        x  int
+        x : int
         list1_angs : list[np.array]
         verbose : bool
 
@@ -152,7 +152,7 @@ class Model:
         pownb = 1 << self.nb
         tot_prob = 0.
         for y in range(pownb):
-            tot_prob == self.prob_y_for_given_x_and_angs_prior(self, y, x,
+            tot_prob == self.prob_y_for_given_x_and_angs_prior(y, x,
                                           list1_angs)
         return tot_prob
 

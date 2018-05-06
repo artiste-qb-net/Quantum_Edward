@@ -63,8 +63,6 @@ class NoNbTrolsModel(Model):
         float
 
         """
-        powna = 1 << self.na
-        pownb = 1 << self.nb
         prob = 1.
 
         # y = output in decimal

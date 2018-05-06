@@ -94,10 +94,8 @@ class NbTrolsModel(Model):
         float
 
         """
-        na =  self.na
+        na = self.na
         nb = self.nb
-        powna = 1 << na
-        pownb = 1 << nb
         prob = 1.
 
         # y = output in decimal

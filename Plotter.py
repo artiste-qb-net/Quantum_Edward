@@ -63,7 +63,8 @@ class Plotter:
                               label='layer ' + str(k))
                 ax[0, y].set_ylabel("conc" + str(y))
 
-                ax[1, y].plot(range(fin_t), delta_conc_nt_2_len1[0:fin_t, y, k],
+                ax[1, y].plot(range(fin_t),
+                              delta_conc_nt_2_len1[0:fin_t, y, k],
                               label='layer ' + str(k))
                 ax[1, y].set_ylabel("delta_conc" + str(y))
 
