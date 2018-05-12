@@ -77,9 +77,9 @@ class Model:
 
         # with beta function, if two concentrations are equal,
         # mean_x beta(x, conc0=1, conc1=1) = .5
-        # ang = prob*pi
+        # ang = prob*dpi
         self.list1_angs_prior = [ss.beta.mean(self.list1_conc0_prior[k],
-                                 self.list1_conc1_prior[k])*np.pi
+                                 self.list1_conc1_prior[k])*ut.dpi
                                  for k in range(self.len1)]
 
     def get_shapes1(self):

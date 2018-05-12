@@ -3,6 +3,7 @@ import numpy.random as npr
 import scipy.special as sp
 import scipy.stats as ss
 
+dpi = 2*np.pi
 
 def bin_vec_to_dec(bin_vec, nsam=1):
     """
