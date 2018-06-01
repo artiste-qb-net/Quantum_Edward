@@ -50,7 +50,7 @@ class NbTrolsModel(Model):
 
     Note that the expansion of a multiplexor into elementary gates (cnots
     and single qubit rotations) contains a huge number of gates (exp in the
-    number of controls). However, such expansions can be shorted by
+    number of controls). However, such expansions can be shortened by
     approximating the multiplexors, using, for instance, the technique of
     Ref.2.
 
