@@ -4,6 +4,7 @@ import scipy.stats as ss
 import utilities as ut
 import math
 from Model import *
+from NbTrolsModel import *
 
 
 class NoNbTrolsModel(Model):
@@ -40,14 +41,34 @@ class NoNbTrolsModel(Model):
         na = self.na
         nb = self.nb
         powna = 1 << na
-        return [(powna,)]*nb
+        return [(1 << k,) for k in range(na)] + [(powna,)]*nb
 
-    def prob_y_for_given_x_and_angs_prior(self, y, x,
-                                          list1_angs,
-                                          verbose=False):
+    def prob_x(self, x,
+               list1_angs,
+               verbose=False):
         """
-        Returns the probability of y given x and list1_angs. P(y | x,
-        list1_angs)
+        Returns probability of input x, P(x).
+
+        Parameters
+        ----------
+        x : int
+            x is an int in range(powna).
+        list1_angs : list[np.array]
+        verbose : bool
+
+        Returns
+        -------
+        float
+
+        """
+        return NbTrolsModel.static_prob_x(x, self.na, list1_angs, verbose)
+
+    def prob_y_given_x_and_angs_prior(self, y, x,
+                                      list1_angs,
+                                      verbose=False):
+        """
+        Returns the probability of y given x and list1_angs, P(y | x,
+        list1_angs).
 
         Parameters
         ----------
@@ -63,22 +84,26 @@ class NoNbTrolsModel(Model):
         float
 
         """
+        na = self.na
         prob = 1.
 
         # y = output in decimal
         ybin = ut.dec_to_bin_vec(y, self.nb)
-        num_nb_trols = 0
-        for angs in list1_angs:
-            ylast_bit = ybin[num_nb_trols]
+        num_trols = na
+        for angs in list1_angs[na:]:
+            ylast_bit = ybin[num_trols-na]
             factor = ut.ang_to_cs2_prob(angs[x], ylast_bit)
             if verbose:
-                print('na+num_nb_trols=', self.na+num_nb_trols,
-                      "ybin[:num_nb_trols+1]=", ybin[:num_nb_trols+1],
-                      "ylast_bit=", ylast_bit,
-                      "factor=", factor)
+                print('num_trols=', num_trols,
+                      "ybin[:num_trols-na], y_last_bit",
+                      ybin[:num_trols-na],
+                      ylast_bit)
             prob *= factor
 
-            num_nb_trols += 1
+            num_trols += 1
+
+        if verbose:
+            print('\tybin, prob:', ybin, prob)
 
         return prob
 

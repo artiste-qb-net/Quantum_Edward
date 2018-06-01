@@ -10,12 +10,13 @@ class TimeStep:
     are various possible methods for calculating delta lambda. A nice 
     description of the various methods can be found in the Wikipedia article 
     (cited below) for "Stochastic Gradient Descent" (in our case, it's an 
-    ascent) 
+    ascent, not a descent)
 
-    We use here a positive eta (eta is a scalar factor multiplying delta 
-    lambda) because we are trying to maximize ELBO. In conventional 
-    Artificial Neural Net algorithms, one is minimizing cost, so one uses a 
-    negative eta. 
+    In conventional Artificial Neural Net algorithms, one is minimizing
+    Cost, so change in Cost must be negative. Here, we are trying to
+    maximize ELBO so the change in ELBO must be positive. In both cases,
+    eta > 0 (eta is a scalar factor multiplying delta lambda). But replace
+    eta by - eta to go from time step of Cost to that of ELBO or vice versa.
 
     References
     ----------

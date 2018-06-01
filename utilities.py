@@ -5,6 +5,7 @@ import scipy.stats as ss
 
 dpi = 2*np.pi
 
+
 def bin_vec_to_dec(bin_vec, nsam=1):
     """
     This function takes a 1 dim array of zeros and ones and returns the

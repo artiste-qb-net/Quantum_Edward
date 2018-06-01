@@ -14,8 +14,8 @@ class Plotter:
 
     * 2 refers to whether for conc0 or conc1.
 
-    * len1 refers to the layer. For instance, for NbTrols and NoNbTrols
-    models, len1=nb.
+    * len1 refers to the number of layers. For instance, for NbTrols and
+    NoNbTrols models, len1=na+nb.
 
     For plotting purposes, to reduce number of angles being displayed,
     each layer of list1_conc0 and list1_conc1 is averaged so that it becomes
@@ -29,9 +29,9 @@ class Plotter:
         The input parameters of this function are created and filled when
         one runs Fitter:do_fit().
 
-        Plots time series (aka traces), for t = int in range(fin_t),
-        of concentrations conc0 and conc1 and their deltas delta_conc0,
-        delta_conc1, for each layer.
+        This function plots time series (aka traces), for t = int in range(
+        fin_t), of concentrations conc0 and conc1 and their deltas
+        delta_conc0, delta_conc1, for each layer.
 
         Parameters
         ----------
@@ -41,11 +41,11 @@ class Plotter:
             shape=(nt, 2, len1). This array is stored within Fitter and
             filled by a call to Fitter:do_fit(). It contains the time-series
             of conc0, conc1 for each layer.
-        delta_conc_nt_2_len1 :
-            np.array shape=(nt, 2, len1). This array is stored within Fitter
-            and filled by a call to Fitter:do_fit(). It contains the
-            time-series of the CHANGES in conc0 and conc1 for each layer. (
-            here CHANGES refers to changes between consecutive time steps).
+        delta_conc_nt_2_len1 : np.array
+            shape=(nt, 2, len1). This array is stored within Fitter and
+            filled by a call to Fitter:do_fit(). It contains the time-series
+            of the CHANGES in conc0 and conc1 for each layer. (here CHANGES
+            refers to changes between consecutive time steps).
 
         Returns
         -------
@@ -81,9 +81,9 @@ class Plotter:
         The input parameters of this function are created and filled when
         one runs Fitter:do_fit().
 
-        Plots time series (aka traces), for t = int in range(fin_t), of ELBO
-        for each layer. Since we are attempting to maximize ELBO, ideally
-        this curve should be increasing or flat.
+        This function plots time series (aka traces), for t = int in range(
+        fin_t), of ELBO for each layer. Since we are attempting to maximize
+        ELBO, ideally this curve should be increasing or flat.
 
         Parameters
         ----------
