@@ -57,6 +57,22 @@ class NbTrolsModel(Model):
     Ref.3 explains the motivation for choosing this model. This model is in
     fact guaranteed to fully parametrize P(x) and P(y|x).
 
+    One can train these circuits in two steps. Consider the NbTrolsModel
+    circuit as an example. The data consists of many rows with one (y,
+    x) pair per row.
+
+    1. fit P(x) as follows: use the first na=4 gates of the circuit, let the
+    x part of each row of the data be the output at qubits in range(na).
+
+    2. fit P(y | x) as follows: use gates from na=4 to the last one at na +
+    nb = 7, use pair (y, x) of each row of the data, let x be the input at
+    qubits in range(na) and y the output at qubits in range(na, na+nb). (
+    ELBO would be different for steps 1, 2)
+
+    An alternative training method is to fit P(y, x) all at once. Use all
+    na+nb=7 gates, use pair (y, x) of each row of the data, let (y,
+    x) be the output at qubits in range(na+nb).
+
     The circuits given above are for finding a fit of both P(x) and P(y|x).
     However, if one wants to use a physical hardware device as a classifier,
     then one should omit the beginning part of the circuits (the parts that
