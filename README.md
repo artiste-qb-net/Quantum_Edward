@@ -1,5 +1,17 @@
 # Quantum Edward
 
+## Installation
+
+You can install Quantum Edward from the Python package manager `pip` using:
+```
+pip install quantum_edward --user
+```
+If you are useing JupyterNotebook, use:
+```
+!pip install quantum_edward --user
+```
+and restart the kernel.
+
 Quantum Edward at this point is just a small library of Python tools for 
 doing classical supervised learning on Quantum Neural Networks (QNNs). 
 
